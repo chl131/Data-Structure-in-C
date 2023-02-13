@@ -2,6 +2,37 @@
 #include <stdio.h>
 #include <math.h>
 
+int checkSum(long long creditCard, int cardLength, int* mulTwoVal){
+    int sumOne = 0;
+    int sumTwo = 0;
+    int digit;
+    int idx = 0;
+
+    while (creditCard > 0){
+        digit = creditCard % 10;
+        // printf("%d %lld\n", digit, creditCard);
+        if (idx % 2 == 0){
+            sumTwo += digit;
+        } else {
+            sumOne += mulTwoVal[digit];
+        }
+        // printf("%d %d \n", sumOne, sumTwo);
+
+        creditCard /= 10;
+        idx ++;
+    }
+
+    // printf("%lld %d\n", creditCard, cardLength);
+    // printf("%d \n", sumOne + sumTwo);
+    // printf("\n");
+    if ((sumOne + sumTwo) % 10 == 0){
+        return 1;
+    } else {
+        return 0;
+    }
+
+}
+
 void validCreditCards(long long* creditCards, int arrSize){
     // char cartType[4][16];
     // strcpy(cartType[0], "AMEX");
@@ -66,37 +97,6 @@ void validCreditCards(long long* creditCards, int arrSize){
             
         }
     }
-}
-
-int checkSum(long long creditCard, int cardLength, int* mulTwoVal){
-    int sumOne = 0;
-    int sumTwo = 0;
-    int digit;
-    int idx = 0;
-
-    while (creditCard > 0){
-        digit = creditCard % 10;
-        // printf("%d %lld\n", digit, creditCard);
-        if (idx % 2 == 0){
-            sumTwo += digit;
-        } else {
-            sumOne += mulTwoVal[digit];
-        }
-        // printf("%d %d \n", sumOne, sumTwo);
-
-        creditCard /= 10;
-        idx ++;
-    }
-
-    // printf("%lld %d\n", creditCard, cardLength);
-    // printf("%d \n", sumOne + sumTwo);
-    // printf("\n");
-    if ((sumOne + sumTwo) % 10 == 0){
-        return 1;
-    } else {
-        return 0;
-    }
-
 }
 
 int main(void) 
