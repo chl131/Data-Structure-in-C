@@ -10,21 +10,17 @@ int checkSum(long long creditCard, int cardLength, int* mulTwoVal){
 
     while (creditCard > 0){
         digit = creditCard % 10;
-        // printf("%d %lld\n", digit, creditCard);
+        
         if (idx % 2 == 0){
             sumTwo += digit;
         } else {
             sumOne += mulTwoVal[digit];
         }
-        // printf("%d %d \n", sumOne, sumTwo);
 
         creditCard /= 10;
         idx ++;
     }
 
-    // printf("%lld %d\n", creditCard, cardLength);
-    // printf("%d \n", sumOne + sumTwo);
-    // printf("\n");
     if ((sumOne + sumTwo) % 10 == 0){
         return 1;
     } else {
@@ -56,6 +52,7 @@ void validCreditCards(long long* creditCards, int arrSize){
             if (creditCard < 0 || checkSum(creditCard, cardLength, mulTwoVal) == 0){
                 printf("Card Number: %lld ", creditCard);
                 printf("Type: %s\n", "INVALID");
+                printf("\n");
                 continue;
             }
 
@@ -64,6 +61,7 @@ void validCreditCards(long long* creditCards, int arrSize){
                 if (prefix == 34 || prefix == 37){
                     printf("Card Number: %lld ", creditCard);
                     printf("Type: %s\n", "AMEX");
+                    printf("\n");
                     isValid = 1;
                 }
             } else if (cardLength == 16){
@@ -72,6 +70,7 @@ void validCreditCards(long long* creditCards, int arrSize){
                 if (prefix == 51 || prefix == 52 || prefix == 53 || prefix == 54 || prefix == 55){
                     printf("Card Number: %lld ", creditCard);
                     printf("Type: %s\n", "MASTERCARD");
+                    printf("\n");
                     isValid = 1;
                 }
                 // VISA
@@ -79,6 +78,7 @@ void validCreditCards(long long* creditCards, int arrSize){
                 if (prefix == 4){
                     printf("Card Number: %lld ", creditCard);
                     printf("Type: %s\n", "VISA");
+                    printf("\n");
                     isValid = 1;
                 }
             } else if (cardLength == 13){
@@ -86,6 +86,7 @@ void validCreditCards(long long* creditCards, int arrSize){
                 if (prefix == 4){
                     printf("Card Number: %lld ", creditCard);
                     printf("Type: %s\n", "VISA");
+                    printf("\n");
                     isValid = 1;
                 }
             }
@@ -93,6 +94,7 @@ void validCreditCards(long long* creditCards, int arrSize){
             if (!isValid){
                 printf("Card Number: %lld ", creditCard);
                 printf("Type: %s\n", "INVALID");
+                printf("\n");
             }
             
         }
